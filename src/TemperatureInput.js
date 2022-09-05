@@ -1,11 +1,22 @@
 import React from 'react'
 
+const scaleNames = {
+    c: 'цельсия',
+    f: 'фаренгейта'
+}
+
+
 function TemperatureInput(props) {
-    const {temperature, handleChange} = props
-   
+    const { temperature, scale } = props
+
+    const handleChange = (evt) => {
+        props.onTemperatureChange(evt.target.value);
+    }
+
+    
     return (
         <fieldset>
-            <legend>Введите температуру в градусах Цельсия:</legend>
+            <legend>Температура в градусах  {scaleNames[scale]}</legend>
             <input
                 value={temperature}
                 onChange={handleChange} />
